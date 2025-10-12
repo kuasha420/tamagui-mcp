@@ -242,6 +242,103 @@ npx -y @smithery/cli install @probelabs/docs-mcp --client claude
 
 [![MseeP.ai Security Assessment Badge](https://mseep.net/pr/probelabs-docs-mcp-badge.png)](https://mseep.ai/app/probelabs-docs-mcp)
 
+## Automated NPM Releases with GitHub Actions
+
+This project includes a reusable GitHub Actions workflow that makes releasing MCP servers to NPM incredibly simple. You can use this workflow in any project to automatically build and publish your MCP server when you push a git tag.
+
+### Using the Reusable Release Workflow
+
+To use this automated release system in your own project, create a single file `.github/workflows/release.yml`:
+
+```yaml
+name: Release MCP
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    uses: probelabs/docs-mcp/.github/workflows/release-mcp.yml@main
+    with:
+      package-name: '@yourorg/your-mcp-server'
+      package-description: 'Your MCP Server Description'
+      include-folders: 'src,data,bin'  # Folders to include in the package
+      include-files: '*.json,*.md'     # File patterns to include
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+Then simply create a git tag to trigger a release:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+### Workflow Input Parameters
+
+| Parameter | Required | Default | Description |
+|-----------|----------|---------|-------------|
+| `package-name` | Yes | - | NPM package name (e.g., `@org/my-mcp`) |
+| `package-description` | No | `MCP Server` | Package description |
+| `entry-point` | No | `src/index.js` | Main entry file path |
+| `include-folders` | No | `src,data,bin` | Comma-separated list of folders to include |
+| `include-files` | No | `*.json,*.md,LICENSE` | Comma-separated list of file patterns |
+| `dependencies` | No | `{}` | Additional dependencies as JSON string |
+| `build-command` | No | - | Build command to run before publishing |
+| `node-version` | No | `18` | Node.js version to use |
+
+### Example Configurations
+
+#### Minimal Configuration
+```yaml
+jobs:
+  release:
+    uses: probelabs/docs-mcp/.github/workflows/release-mcp.yml@main
+    with:
+      package-name: '@myorg/simple-mcp'
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+#### With Custom Dependencies
+```yaml
+jobs:
+  release:
+    uses: probelabs/docs-mcp/.github/workflows/release-mcp.yml@main
+    with:
+      package-name: '@myorg/custom-mcp'
+      dependencies: '{"lodash": "^4.17.21", "dotenv": "^16.0.0"}'
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+#### With Build Step
+```yaml
+jobs:
+  release:
+    uses: probelabs/docs-mcp/.github/workflows/release-mcp.yml@main
+    with:
+      package-name: '@myorg/built-mcp'
+      build-command: 'npm run build && npm run prepare-data'
+      include-folders: 'dist,assets'
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+### Prerequisites
+
+1. Add `NPM_TOKEN` secret to your GitHub repository (Settings → Secrets → Actions)
+2. Ensure you have npm publish access for your organization/scope
+
+The workflow automatically:
+- Extracts version from git tags (e.g., `v1.0.0` → `1.0.0`)
+- Generates a complete `package.json` with MCP dependencies
+- Runs optional build commands
+- Publishes to NPM with public access
+
 ## License
 
 MIT
