@@ -1,17 +1,17 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/buger-docs-mcp-badge.png)](https://mseep.ai/app/buger-docs-mcp)
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/probelabs-docs-mcp-badge.png)](https://mseep.ai/app/probelabs-docs-mcp)
 
 # Docs MCP Server
-[![smithery badge](https://smithery.ai/badge/@buger/docs-mcp)](https://smithery.ai/server/@buger/docs-mcp)
+[![smithery badge](https://smithery.ai/badge/@probelabs/docs-mcp)](https://smithery.ai/server/@probelabs/docs-mcp)
 
 This project provides a flexible Model Context Protocol (MCP) server, powered by [Probe](https://probeai.dev/), designed to make documentation or codebases searchable by AI assistants.
 
-<a href="https://glama.ai/mcp/servers/@buger/docs-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@buger/docs-mcp/badge" alt="Docs Server MCP server" />
+<a href="https://glama.ai/mcp/servers/@probelabs/docs-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@probelabs/docs-mcp/badge" alt="Docs Server MCP server" />
 </a>
 
 You can chat with code or your docs, simply by pointing to git repo or a folder.
 ```
-npx -y @buger/docs-mcp@latest --gitUrl https://github.com/buger/probe
+npx -y @probelabs/docs-mcp@latest --gitUrl https://github.com/probelabs/probe
 ```
 
 **Use Cases:**
@@ -38,10 +38,10 @@ The primary way to use this server is via `npx`, which downloads and runs the pa
 
 ### Installing via Smithery
 
-To install Docs MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@buger/docs-mcp):
+To install Docs MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@probelabs/docs-mcp):
 
 ```bash
-npx -y @smithery/cli install @buger/docs-mcp --client claude
+npx -y @smithery/cli install @probelabs/docs-mcp --client claude
 ```
 
 ### Integrating with MCP Clients (e.g., IDEs)
@@ -50,7 +50,7 @@ You can configure your MCP client to launch this server using `npx`. Here are ex
 
 **Example 1: Dynamically Searching a Git Repository (Tyk Docs)**
 
-This configuration tells the client to run the latest `@buger/docs-mcp` package using `npx`, pointing it dynamically to the Tyk documentation repository. The `-y` argument automatically confirms the `npx` installation prompt. The `--toolName` and `--toolDescription` arguments customize how the search tool appears to the AI assistant.
+This configuration tells the client to run the latest `@probelabs/docs-mcp` package using `npx`, pointing it dynamically to the Tyk documentation repository. The `-y` argument automatically confirms the `npx` installation prompt. The `--toolName` and `--toolDescription` arguments customize how the search tool appears to the AI assistant.
 
 ```json
 {
@@ -59,7 +59,7 @@ This configuration tells the client to run the latest `@buger/docs-mcp` package 
       "command": "npx",
       "args": [
         "-y",
-        "@buger/docs-mcp@latest",
+        "@probelabs/docs-mcp@latest",
         "--gitUrl",
         "https://github.com/TykTechnologies/tyk-docs",
         "--toolName",
@@ -76,7 +76,7 @@ This configuration tells the client to run the latest `@buger/docs-mcp` package 
 Alternatively, some clients might allow specifying the full command directly. You could achieve the same as Example 1 using:
 
 ```bash
-npx -y @buger/docs-mcp@latest --gitUrl https://github.com/TykTechnologies/tyk-docs --toolName search_tyk_docs --toolDescription "Search Tyk API Management Documentation"
+npx -y @probelabs/docs-mcp@latest --gitUrl https://github.com/TykTechnologies/tyk-docs --toolName search_tyk_docs --toolDescription "Search Tyk API Management Documentation"
 ```
 
 **Example 2: Using a Pre-built, Branded MCP Server (e.g., Tyk Package)**
