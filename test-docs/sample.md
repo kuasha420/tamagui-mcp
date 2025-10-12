@@ -7,7 +7,7 @@ This is a sample documentation file to test the Probe Docs MCP example.
 To install the package, run:
 
 ```bash
-npm install @buger/probe
+npm install @probelabs/probe
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install @buger/probe
 Here's how to use the package:
 
 ```javascript
-import { search } from '@buger/probe';
+import { search } from '@probelabs/probe';
 
 const results = await search({
   path: '/path/to/your/code',
@@ -42,7 +42,7 @@ You can configure the search with various options:
 You can use custom patterns to search for specific code structures:
 
 ```javascript
-import { query } from '@buger/probe';
+import { query } from '@probelabs/probe';
 
 const results = await query({
   path: '/path/to/your/code',
@@ -57,7 +57,7 @@ console.log(results);
 You can extract code from specific files:
 
 ```javascript
-import { extract } from '@buger/probe';
+import { extract } from '@probelabs/probe';
 
 const results = await extract({
   path: '/path/to/your/code',

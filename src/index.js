@@ -10,7 +10,7 @@ import {
 import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
-import { search } from '@buger/probe';
+import { search } from '@probelabs/probe';
 import simpleGit from 'simple-git';
 import axios from 'axios'; // Import axios
 import * as tar from 'tar'; // Import tar using namespace
@@ -68,7 +68,7 @@ class DocsMcpServer {
 		 */
 		this.server = new Server(
 			{
-				name: '@buger/probe-docs-mcp', // Keep server name static
+				name: '@probelabs/probe-docs-mcp', // Keep server name static
 				version: packageVersion,
 			},
 			{
