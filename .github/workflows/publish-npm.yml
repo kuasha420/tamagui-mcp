@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   publish-npm:
-    name: Publish @probelabs/probe-docs-mcp to npm
+    name: Publish @probelabs/docs-mcp to npm
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -27,11 +27,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18" # Or your preferred Node.js version
+          node-version: "18"
           registry-url: "https://registry.npmjs.org/"
           scope: "@probelabs"
-          # The token is implicitly used by setup-node to configure .npmrc
-          # No need to explicitly pass NODE_AUTH_TOKEN to setup-node
 
       - name: Install dependencies
         run: npm install
@@ -48,5 +46,4 @@ jobs:
       - name: Publish to npm
         run: npm publish --access public
         env:
-          # Use the secret token for the publish command
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
