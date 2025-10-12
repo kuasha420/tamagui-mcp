@@ -1,16 +1,10 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/probelabs-docs-mcp-badge.png)](https://mseep.ai/app/probelabs-docs-mcp)
-
 # Docs MCP Server
-[![smithery badge](https://smithery.ai/badge/@probelabs/docs-mcp)](https://smithery.ai/server/@probelabs/docs-mcp)
 
-This project provides a flexible Model Context Protocol (MCP) server, powered by [Probe](https://probeai.dev/), designed to make documentation or codebases searchable by AI assistants.
+A flexible Model Context Protocol (MCP) server powered by [Probe](https://probeai.dev/) that makes any documentation or codebase searchable by AI assistants.
 
-<a href="https://glama.ai/mcp/servers/@probelabs/docs-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@probelabs/docs-mcp/badge" alt="Docs Server MCP server" />
-</a>
+Chat with code or your docs by simply pointing to a git repo or folder:
 
-You can chat with code or your docs, simply by pointing to git repo or a folder.
-```
+```bash
 npx -y @probelabs/docs-mcp@latest --gitUrl https://github.com/probelabs/probe
 ```
 
@@ -32,19 +26,33 @@ The content source (documentation or code) can be **pre-built** into the package
 - **Customizable MCP Tool:** Define the name and description of the search tool exposed to AI assistants.
 - **AI Integration:** Seamlessly integrates with AI assistants supporting the Model Context Protocol (MCP).
 
-## Usage
+## Installation
 
-The primary way to use this server is via `npx`, which downloads and runs the package without needing a local installation. This makes it easy to integrate with AI assistants and MCP clients (like IDE extensions).
+### Quick Start with Claude Desktop
 
-### Installing via Smithery
+Add to your Claude Desktop configuration file (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
 
-To install Docs MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@probelabs/docs-mcp):
-
-```bash
-npx -y @smithery/cli install @probelabs/docs-mcp --client claude
+```json
+{
+  "mcpServers": {
+    "docs-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@probelabs/docs-mcp@latest",
+        "--gitUrl",
+        "https://github.com/your-org/your-repo",
+        "--toolName",
+        "search_docs",
+        "--toolDescription",
+        "Search documentation"
+      ]
+    }
+  }
+}
 ```
 
-### Integrating with MCP Clients (e.g., IDEs)
+### MCP Client Integration
 
 You can configure your MCP client to launch this server using `npx`. Here are examples of how you might configure a client (syntax may vary based on the specific client):
 
@@ -213,6 +221,26 @@ Assuming the pre-built package `@tyk/docs-mcp` defined its tool name as `search_
 ```
 
 *(The previous "Publishing as an npm Package" section has been replaced by the "Creating Your Own Pre-built MCP Server" section above.)*
+
+## Third-Party Integrations
+
+### Install via Smithery
+
+To install Docs MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@probelabs/docs-mcp):
+
+```bash
+npx -y @smithery/cli install @probelabs/docs-mcp --client claude
+```
+
+[![smithery badge](https://smithery.ai/badge/@probelabs/docs-mcp)](https://smithery.ai/server/@probelabs/docs-mcp)
+
+### Community Listings
+
+<a href="https://glama.ai/mcp/servers/@probelabs/docs-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@probelabs/docs-mcp/badge" alt="Docs Server MCP server" />
+</a>
+
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/probelabs-docs-mcp-badge.png)](https://mseep.ai/app/probelabs-docs-mcp)
 
 ## License
 
