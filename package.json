@@ -1,6 +1,6 @@
 {
   "name": "tamagui-mcp",
-  "version": "0.11361.1",
+  "version": "0.11361.2",
   "description": "A MCP for Tamagui documentation and codebase using Probe.",
   "type": "module",
   "main": "src/index.js",
