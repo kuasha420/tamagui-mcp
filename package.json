@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "mcp": "bin/tamagui-mcp"
+    "tamagui-mcp": "bin/tamagui-mcp"
   },
   "files": [
     "bin",
