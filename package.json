@@ -1,6 +1,6 @@
 {
   "name": "tamagui-mcp",
-  "version": "0.11361.0",
+  "version": "0.11361.1",
   "description": "A MCP for Tamagui documentation and codebase using Probe.",
   "type": "module",
   "main": "src/index.js",
@@ -26,7 +26,7 @@
   "author": "Leonid Bugaev",
   "license": "MIT",
   "dependencies": {
-    "@probelabs/probe": "^0.6.0-rc161",
+    "@probelabs/probe": "^0.6.0-rc128",
     "@modelcontextprotocol/sdk": "^1.6.0",
     "axios": "^1.7.2",
     "fs-extra": "^11.1.1",
